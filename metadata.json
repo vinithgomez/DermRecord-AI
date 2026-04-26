@@ -1,0 +1,5 @@
+{
+  "name": "DermRecord AI",
+  "description": "",
+  "requestFramePermissions": ["camera"]
+}
