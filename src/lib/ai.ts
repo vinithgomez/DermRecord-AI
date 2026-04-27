@@ -222,6 +222,32 @@ export async function generateReportDetails(patientData: any, records: any[]) {
   return JSON.parse(cleanText);
 }
 
+export async function generateFollowUpNotes(patientData: any, records: any[]) {
+  const prompt = `
+    Based on the following patient profile and medical history, generate a draft for the next clinical visit (follow-up notes).
+    Predict logical progression, likely symptoms to check for, and potential treatment adjustments based on standard dermatological practices.
+    
+    Patient Data: ${JSON.stringify(patientData)}
+    Medical History: ${JSON.stringify(records)}
+    
+    The draft should:
+    - Reference the specific conditions mentioned in history.
+    - Ask about progress since the last treatment.
+    - Be structured professional medical notes.
+    - Provide placeholders [like this] where the doctor needs to fill in specific current observations.
+  `;
+
+  const response = await ai.models.generateContent({
+    model: "gemini-3.1-pro-preview",
+    contents: prompt,
+    config: {
+      systemInstruction: "You are an expert dermatology assistant. Generate professional follow-up clinical note drafts based on patient history. Output strictly in plain text without any markdown symbols like asterisks (**) or bullet points (*). Use capitalization for headers and plain dashes for lists if needed.",
+    }
+  });
+
+  return response.text;
+}
+
 export async function analyzeSkinCondition(imageStr: string | null, observation: string) {
   try {
     const parts: any[] = [];

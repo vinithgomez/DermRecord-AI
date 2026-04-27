@@ -9,9 +9,9 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { BrainCircuit, FileText, Activity, History, Edit, Trash2, Wand2, TrendingUp } from "lucide-react";
+import { BrainCircuit, FileText, Activity, History, Edit, Trash2, Wand2, TrendingUp, Sparkles, Loader2 } from "lucide-react";
 import { apiFetch } from "../lib/api";
-import { extractClinicalData, generateRagContextFallback, retrieveRagContext, improveClinicalNotes, generateReport, generatePatientSummary } from "../lib/ai";
+import { extractClinicalData, generateRagContextFallback, retrieveRagContext, improveClinicalNotes, generateReport, generatePatientSummary, generateFollowUpNotes } from "../lib/ai";
 import {
   Dialog,
   DialogContent,
@@ -109,6 +109,18 @@ export function PatientDetail() {
     },
     onSuccess: (data) => {
       setNotes(data);
+    }
+  });
+
+  const followUpNotesMutation = useMutation({
+    mutationFn: async () => {
+      return await generateFollowUpNotes(patient, records || []);
+    },
+    onSuccess: (data) => {
+      setNotes(data);
+    },
+    onError: (error: any) => {
+      alert(`Follow-up Generation Error: ${error.message}`);
     }
   });
 
@@ -396,6 +408,16 @@ export function PatientDetail() {
                   onChange={(e) => setNotes(e.target.value)}
                 />
                 <div className="absolute bottom-3 right-3 flex gap-2">
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="gap-2 border-blue-200 text-blue-600 hover:bg-blue-50"
+                    onClick={() => followUpNotesMutation.mutate()}
+                    disabled={followUpNotesMutation.isPending || records?.length === 0}
+                  >
+                    {followUpNotesMutation.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
+                    {followUpNotesMutation.isPending ? "Drafting..." : "Auto-generate Draft"}
+                  </Button>
                   <Button 
                     size="sm" 
                     variant="secondary" 
