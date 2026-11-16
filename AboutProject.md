@@ -1,4 +1,4 @@
-# DermRecord AI — Complete Interview-Prep Handbook
+# DermRecord AI — Complete Project Handbook
 
 > **Purpose of this handbook:** Everything in this document is derived directly from the actual source code in this repository. Where a motivation, deployment target, or historical step is inferred rather than explicitly written in code, it is clearly marked **`(assumption)`**.
 
