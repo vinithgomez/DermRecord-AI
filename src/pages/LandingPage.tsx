@@ -56,9 +56,6 @@ export function LandingPage() {
             <a href="#tech" className="text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors">The Engine</a>
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
-            <Link to="/login" className="hidden sm:block">
-              <Button variant="ghost" className="text-slate-600 hover:bg-slate-100">Practitioner Login</Button>
-            </Link>
             <Link to="/login">
               <Button className="bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-100 transition-all active:scale-95 text-sm sm:text-base px-4 sm:px-6">Enter Suite</Button>
             </Link>
@@ -201,9 +198,6 @@ export function LandingPage() {
               <p className="text-slate-500 leading-relaxed font-light">
                 Our NLP model identifies dermatological symptoms, medications, and anatomical locations from unstructured clinical notes instantly.
               </p>
-              <div className="mt-8 flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                Learn tech <ChevronRight className="w-4 h-4" />
-              </div>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="group p-10 rounded-[32px] bg-slate-50 hover:bg-white hover:shadow-2xl hover:shadow-blue-50 transition-all border border-transparent hover:border-blue-100">
@@ -214,9 +208,6 @@ export function LandingPage() {
               <p className="text-slate-500 leading-relaxed font-light">
                 Convert messy observations into high-quality medical reports. Standardize your clinical output without adding hours to your day.
               </p>
-              <div className="mt-8 flex items-center gap-2 text-teal-600 font-bold text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                View format <ChevronRight className="w-4 h-4" />
-              </div>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="group p-10 rounded-[32px] bg-slate-50 hover:bg-white hover:shadow-2xl hover:shadow-blue-50 transition-all border border-transparent hover:border-blue-100">
@@ -227,9 +218,6 @@ export function LandingPage() {
               <p className="text-slate-500 leading-relaxed font-light">
                 Retrieval Augmented Generation pulls from a verified vector database of clinical guidelines to provide evidence-based suggestions.
               </p>
-              <div className="mt-8 flex items-center gap-2 text-rose-600 font-bold text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                Explore Database <ChevronRight className="w-4 h-4" />
-              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -356,17 +344,14 @@ export function LandingPage() {
               <div className="space-y-4 text-center md:text-left">
                 <h5 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Platform</h5>
                 <nav className="flex flex-col gap-2">
-                  <a href="#" className="text-sm font-medium text-slate-500 hover:text-blue-600">Privacy</a>
-                  <a href="#" className="text-sm font-medium text-slate-500 hover:text-blue-600">Security</a>
-                  <a href="#" className="text-sm font-medium text-slate-500 hover:text-blue-600">Compliance</a>
+                  <a href="#clinical" className="text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors">Security</a>
                 </nav>
               </div>
               <div className="space-y-4 text-center md:text-left">
                 <h5 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Intelligence</h5>
                 <nav className="flex flex-col gap-2">
-                  <a href="#" className="text-sm font-medium text-slate-500 hover:text-blue-600">RAG Engine</a>
-                  <a href="#" className="text-sm font-medium text-slate-500 hover:text-blue-600">NLP Core</a>
-                  <a href="#" className="text-sm font-medium text-slate-500 hover:text-blue-600">Models</a>
+                  <a href="#features" className="text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors">RAG Engine</a>
+                  <a href="#features" className="text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors">NLP Core</a>
                 </nav>
               </div>
             </div>
